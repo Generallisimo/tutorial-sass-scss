@@ -1,0 +1,56 @@
+// миксины для целых одинаковых настроек
+@mixin font{
+    font-size: $fSize;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #333;
+}
+// миксины с аргументом
+@mixin back($bk, $c){
+    background-color:$bk;
+    color: $c;
+}
+// неогр кол параметров
+@mixin padd($padd...){
+    padding: $padd;
+}
+@mixin link($color ,$hover, $active, $visited){
+        // так тегу можно сразу задать параметр
+    // a{   
+    //      color: $color;
+    //     // псевдо
+    //     &:hover{
+    //         color: $hover;
+    //     }
+    //     &:active{
+    //         color: $active;
+    //     }
+    //     &:visited{
+    //         color: $visited;
+    //     }
+    // }
+    color: $color;
+    // псевдо
+    &:hover{
+        color: $hover;
+    }
+    &:active{
+        color: $active;
+    }
+    &:visited{
+        color: $visited;
+    }
+}
+@mixin grid($cols, $mg){
+    float: left;
+    background-color: red;
+    margin-right: $mg;
+    margin-bottom: $mg;
+    height: 150px;
+    // формула
+    width: ((100% - (($cols - 1) * $mg))/$cols);
+    // укз послед перемнную
+    &:nth-child(#{$cols}n){
+        margin-right: 0;
+    }
+}

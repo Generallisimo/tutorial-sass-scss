@@ -1,0 +1,61 @@
+// импорт
+@import 'variables';
+@import 'mixins';
+*{
+    padding: 0;
+    margin: 0;
+} 
+#grid{
+    float: left;
+    width: 100% ;
+    // укз дочерений элемент
+    > div{
+        @include grid(4, 2%);
+    }
+}
+a{
+    @include link(red,blue ,black , #ffacff)
+}
+// Ко всем кроме 
+.block:not(first){
+    background-color: $bgColor;
+    height: 200px;
+    width: $blockWidth;
+    border: $border;
+    margin-bottom: 20px;
+    // неограниченно
+    @include padd(100px 30px 40px 100px);
+}
+#central_block{
+    padding: 30px;
+    // работаем с внутрненними блоками 
+    ul{
+        list-style: none;
+        display: inline-block;
+        width: 100%;
+        li{
+            float: left;
+            // математчиские счисления
+            width: (100% / 4);
+            a{
+                color: palevioletred;
+            }
+        }
+    }
+    a{
+        // использование миксинов
+        @include font;
+    }
+}
+.first{
+    // работа с микс агрументами
+    @include back(blue, red );
+    height: 100px;
+    margin-bottom: 20px;
+    width: $blockWidth;
+    border: $border;
+    // псевдоклассы работают с амперсантом
+    &:hover{
+        color: black;
+    }
+}
